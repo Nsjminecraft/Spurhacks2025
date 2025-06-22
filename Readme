@@ -1,0 +1,91 @@
+# FlowLift - AI-Powered Gym Tracker
+
+FlowLift is a modern gym tracker and AI workout generator built for SpurHacks 2025. It helps users track workouts, generate personalized workout and meal plans using Google Gemini AI, set and complete fitness goals, and redeem rewards for their progress.
+
+## Features
+
+- **User Registration & Login:** Secure sign-up and authentication.
+- **Personal Info:** Collects user stats (weight, height, age, lifting experience).
+- **AI-Generated Workout Plans:** Personalized weekly workout plans using Google Gemini AI.
+- **AI-Generated Meal Plans:** Custom meal plans tailored to user goals.
+- **Workout Logging:** Log and view past workouts.
+- **XP & Level System:** Earn XP for workouts and goals, level up as you progress.
+- **Goals:** AI-generated, trackable fitness goals with XP rewards.
+- **Rewards:** Redeem XP for sponsor rewards.
+- **FAQ & Sponsors:** Informational pages for users and sponsors.
+
+## Project Structure
+
+```
+.
+├── ai_engine.py
+├── db_helpers.py
+├── FlowLift.py
+├── main.py
+├── static/
+│   └── style.css
+├── templates/
+│   ├── faq.html
+│   ├── goals.html
+│   ├── landing.html
+│   ├── login.html
+│   ├── logWorkout.html
+│   ├── main.html
+│   ├── mealPlan.html
+│   ├── pastWorkouts.html
+│   ├── personalInfo.html
+│   ├── redeemRewards.html
+│   ├── registration.html
+│   ├── sponsors.html
+│   └── workoutPlan.html
+└── ...
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- [Flask](https://flask.palletsprojects.com/)
+- [Flask-Login](https://flask-login.readthedocs.io/)
+- [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/)
+- [PyMongo](https://pymongo.readthedocs.io/)
+- [google-generativeai](https://pypi.org/project/google-generativeai/)
+
+Install dependencies:
+
+```sh
+pip install flask flask-login flask-bcrypt pymongo google-generativeai
+```
+
+### Configuration
+
+- Set your Google Gemini API key in `ai_engine.py` and `FlowLift.py`.
+- Set your MongoDB URI in `main.py` and `FlowLift.py`.
+
+### Running the App
+
+Start the Flask app:
+
+```sh
+python main.py
+```
+
+Visit [http://localhost:5000](http://localhost:5000) in your browser.
+
+## Usage
+
+- **Sign Up:** Register and provide your personal info.
+- **Dashboard:** View your latest workout, XP progress, and actions.
+- **Log Workout:** Add new workouts and track your progress.
+- **Workout/Meal Plan:** Let the AI generate personalized plans.
+- **Goals:** Complete AI-generated goals for XP.
+- **Redeem Rewards:** Spend XP on sponsor rewards.
+
+## License
+
+MIT License
+
+---
+
+*Built for SpurHacks 2025 by the
