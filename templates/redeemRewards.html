@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redeem Rewards - SpurHacks Gym App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Place this after <body> in each HTML file -->
+<header class="main-header">
+    <div class="header-logo">
+        <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+    </div>
+    <nav class="header-nav">
+        <a href="/redeemRewards" class="header-link">Redeem Rewards</a>
+        <a href="/faq" class="header-link">FAQ</a>
+        <a href="/workoutPlan" class="header-link">Workout Plan</a>
+        <a href="/mealPlan" class="header-link">Meal Plan</a>
+        <a href="/goals" class="header-link">Goals</a>
+        <a href="logout" class="header-link">Logout</a>
+    </nav>
+</header>
+    <div class="seven-boxes-container">
+        <div class="main-box">
+            <h1 class="faq-title">Redeem Your Rewards</h1>
+            <div class="rewards-list">
+                {% for reward in rewards %}
+                <div class="inner-box reward-item">
+                    <div class="reward-title">{{ reward.name }}</div>
+                    <div class="reward-desc">{{ reward.description }}</div>
+                    <div class="reward-xp">Cost: <span>{{ reward.xp_cost }} XP</span></div>
+                    {% if user_xp >= reward.xp_cost %}
+                        <form method="POST" action="{{ url_for('cashReward') }}">
+                            <input type="hidden" name="reward_id" value="{{ reward._id }}">
+                            <button class="btn-primary" type="submit">Redeem</button>
+                        </form>
+                    {% else %}
+                        <button class="btn-primary" disabled>Not enough XP</button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

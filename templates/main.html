@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">t
+    <title>FlowLift Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Place this after <body> in each HTML file -->
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a action="redeemRewards" href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a action="faq" href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="dashboard-wrapper">
+            <!-- Latest Workout Box -->
+            <div class="widget latest-workout">
+                <div>
+                    {% if last_workout.exercises is not none and last_workout.exercises|length > 0 %}
+                        <h2>Latest Workout: {{last_workout.workout_type|capitalize}}</h2>
+                        <h3 style="color: white; font-size: 50px; text-align: center;">Exercises</h3>
+                        <ul>
+                            {% for ex in last_workout.exercises %}
+                            <li>
+                                <strong>{{ ex.exercise }}</strong> –
+                                {{ ex.sets }} sets × {{ ex.reps }} reps @ {{ ex.weight }} lbs
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <h2>No workouts logged</h2>
+                        <p>No exercises found. Add your first workout!</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="dashboard-actions">
+                <a href="{{ url_for('viewPastWorkouts') }}" class="workout-btn">View past 7 workouts</a>
+                <a href="{{ url_for('logWorkout') }}" class="workout-btn">Add workout</a>
+            </div>
+            <div class="dashboard-progress">
+                <div class="progress-label">XP Progress</div>
+                <div class="progress-bar">
+                    {% if personal_info %}
+                        {% set current_xp = personal_info.current_xp or 0 %}
+                        {% if current_xp <= 1000 %}
+                            {% set capped_xp = current_xp %}
+                        {% else %}
+                            {% set capped_xp = 1000 %}
+                        {% endif %}
+                        {% set current_level = (capped_xp // 100) + 1 %}
+                        {% set xp_in_current_level = capped_xp % 100 %}
+                        {% set progress_percentage = (xp_in_current_level / 100.0) * 100 %}
+                        <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
+                        <span class="progress-text">{{ xp_in_current_level }}/100 XP (Level {{ current_level }})</span>
+                        <span class="progress-text" style="font-size: 14px; color: #aaa;">Total XP: {{ current_xp }} (Bar maxes at 1000)</span>
+                    {% else %}
+                        <div class="progress-fill" style="width: 0cqmax;"></div>
+                        <span class="progress-text">0/100 XP</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ - SpurHacks Gym App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a action="redeemRewards" href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a action="faq" href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+    <div class="seven-boxes-container">
+        <div class="main-box">
+            <h1 class="faq-title">Frequently Asked Questions</h1>
+            <div class="faq-list">
+                {% for faq in faqs %}
+                <div class="inner-box faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        {{ faq.question }}
+                    </button>
+                    <div class="faq-answer" style="display:none;">
+                        {{ faq.answer }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+        // Toggle answer display on question click
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const answer = this.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

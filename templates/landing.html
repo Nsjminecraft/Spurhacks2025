@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlowLift</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="landing-body">
+    <!-- Place this after <body> in each HTML file -->
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+    <nav class="landing-nav">
+        <div class="logo">Flow<span class="gold">Lift</span></div>
+        <div class="nav-links">
+            <a href="/login" class="nav-btn">Login</a>
+            <a href="/" class="nav-btn nav-btn-signup">Sign Up</a>
+        </div>
+    </nav>
+    <main class="landing-main">
+        <section class="landing-hero">
+            <h1>Welcome to <span class="gold">FlowLift</span></h1>
+            <p class="hero-desc">
+                Unlock your fitness journey with <span class="gold">FlowLift</span>.<br>
+                Track workouts, earn rewards, and join a community that lifts you higher.
+            </p>
+            <a href="/login" class="hero-cta">Get Started</a>
+        </section>
+    </main>
+    <footer class="landing-footer">
+        &copy; {{ 2025 }} FlowLift. All rights reserved.
+    </footer>
+</body>
+</html>

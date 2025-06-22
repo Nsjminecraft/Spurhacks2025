@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log New Workout</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Place this after <body> in each HTML file -->
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+    <a href="/main" class="back-btn">Back to Dashboard</a>
+    <div class="container">
+        <div class="widget latest-workout">
+            <h2>Log New Workout</h2>
+            <form class="add-workout-form" method="POST" action="/addWorkout" id="workoutForm">
+                <!-- Dropdown menu for workout type -->
+                <div class="workout-type-dropdown-container">
+                    <select name="workout_type" class="workout-type-dropdown" required>
+                        <option value="" disabled selected>Select workout type</option>
+                        <option value="push">Push</option>
+                        <option value="pull">Pull</option>
+                        <option value="legs">Legs</option>
+                    </select>
+                </div>
+                <div id="exercise-entries">
+                    <div class="exercise-entry">
+                        <input type="text" name="exercise[]" placeholder="Exercise name" required>
+                        <input type="number" name="sets[]" placeholder="Sets" required>
+                        <input type="number" name="reps[]" placeholder="Reps" required>
+                        <input type="number" step="0.01" name="weight[]" placeholder="Weight(lbs)" required>
+                        <button type="button" class="remove-exercise-btn" onclick="removeExercise(this)">✕</button>
+                    </div>
+                </div>
+                <button type="button" class="add-exercise-btn" id="addExerciseBtn">+ Add Another Exercise</button>
+                <button class="btn-primary">Log Workout</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const addBtn = document.getElementById('addExerciseBtn');
+        const entriesDiv = document.getElementById('exercise-entries');
+
+        addBtn.addEventListener('click', () => {
+            const entry = document.createElement('div');
+            entry.className = 'exercise-entry';
+            entry.innerHTML = `
+                <input type="text" name="exercise[]" placeholder="Exercise name" required>
+                <input type="number" name="sets[]" placeholder="Sets" required>
+                <input type="number" name="reps[]" placeholder="Reps" required>
+                <input type="number" step="0.01" name="weight[]" placeholder="Weight (kg)" required>
+                <button type="button" class="remove-exercise-btn" onclick="removeExercise(this)">✕</button>
+            `;
+            entriesDiv.appendChild(entry);
+        });
+
+        function removeExercise(btn) {
+            btn.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

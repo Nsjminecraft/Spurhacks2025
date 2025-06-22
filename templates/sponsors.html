@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sponsors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a href="/sponsor" class="header-link">Sponsor</a>
+            <a href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+    <div class="sponsors-header">
+        <h1 class="sponsors-title">Our Sponsors</h1>
+        <a href="/main" class="sponsors-btn">Home</a>
+    </div>
+    <div class="sponsors-container">
+        {% for sponsor in sponsors %}
+        <div class="sponsor-card">
+            <img src="{{ url_for('static', filename=sponsor.logo) }}" alt="{{ sponsor.name }} Logo" class="sponsor-logo">
+            <div class="sponsor-name">{{ sponsor.name }}</div>
+            <a href="{{ sponsor.url }}" class="sponsor-link" target="_blank" rel="noopener">Visit Website</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

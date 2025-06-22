@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="/logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+
+<div class="ai-meal-container">
+  {% if error %}
+    <div class="ai-error-container">
+      <h2>❌ Error</h2>
+      <p>{{ error }}</p>
+    </div>
+  {% elif meal_plan %}
+    <div class="ai-meal-grid">
+      {% for daily_meal in meal_plan.dailyMeals %}
+        <div class="ai-meal-day-card">
+          <h3 class="ai-meal-day-title">{{ daily_meal.meal }}</h3>
+          {% for food in daily_meal.foods %}
+            <div class="ai-meal-card">
+              <h4 class="ai-meal-name">{{ food.name }}</h4>
+              <p class="ai-meal-detail-row">
+                <strong class="ai-meal-detail-label">Calories:</strong> 
+                <span class="ai-meal-detail-value">{{ food.calories }} kcal</span>
+              </p>
+              <p class="ai-meal-detail-row">
+                <strong class="ai-meal-detail-label">Protein:</strong> 
+                <span class="ai-meal-detail-value">{{ food.protein }} g</span>
+              </p>
+              <p class="ai-meal-detail-row">
+                <strong class="ai-meal-detail-label">Carbs:</strong> 
+                <span class="ai-meal-detail-value">{{ food.carbs }} g</span>
+              </p>
+              <p class="ai-meal-detail-row">
+                <strong class="ai-meal-detail-label">Fat:</strong> 
+                <span class="ai-meal-detail-value">{{ food.fat }} g</span>
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="ai-loading-container">
+      <h2>🤖 Generating your meal plan...</h2>
+    </div>
+  {% endif %}
+</div>
+
+</body>
+</html>

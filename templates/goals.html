@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals - FlowLift</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-logo">
+            <a href="/main"><span class="logo-red">Flow</span><span class="logo-gold">Lift</span></a>
+        </div>
+        <nav class="header-nav">
+            <a action="redeemRewards" href="/redeemRewards" class="header-link">Redeem Rewards</a>
+            <a action="faq" href="/faq" class="header-link">FAQ</a>
+            <a href="/workoutPlan" class="header-link">Workout Plan</a>
+            <a href="/mealPlan" class="header-link">Meal Plan</a>
+            <a href="/goals" class="header-link">Goals</a>
+            <a href="logout" class="header-link">Logout</a>
+        </nav>
+    </header>
+    <div class="goals-content">
+        <div class="xp-bar-container">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="goals-xp-header">
+            <div class="goals-xp-stats">
+                <span>Current XP: {{ personal_info.current_xp }}</span>
+            </div>
+            <h2 class="goals-section-title">Your Goals</h2>
+        </div>
+        <div class="goals-list">
+        {% if goals %}
+            {% for goal in goals %}
+            <div class="goal-row">
+                <div class="goal goal-flex">
+                    <div>
+                        <div class="goal-header">
+                            <strong>{{ goal.title }}</strong>
+                            <span class="difficulty-{{ goal.category }}">
+                                {% if goal.category == 'beginner' %}🟢{% elif goal.category == 'intermediate' %}🟡{% else %}🔴{% endif %}
+                            </span>
+                        </div>
+                        <p>Description: {{ goal.description }}</p>
+                        <p>Category: {{ goal.category.title() }}</p>
+                        <p>Target: {{ goal.target_value }}</p>
+                        <p>Current: {{ goal.current_value }}</p>
+                        <p>XP Reward: +{{ goal.xp_reward }}</p>
+                        <p>Deadline: {{ goal.deadline }}</p>
+                    </div>
+                    <form method="POST" action="{{ url_for('completeGoal') }}">
+                        <input type="hidden" name="goal_index" value="{{ loop.index0 }}">
+                        <button class="btn-primary goal-done-btn" type="submit">Done {{ loop.index}}</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="color:#fff; text-align:center;">No goals available at the moment.</p>
+        {% endif %}
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        {% if xpSystem %}
+          var progress = {{ xpSystem.get_progress_stats().progress }};
+          document.getElementById('progressFill').style.width = (progress * 100) + '%';
+        {% else %}
+          document.getElementById('progressFill').style.width = '0%';
+        {% endif %}
+      });
+    </script>
+</body>
+</html>

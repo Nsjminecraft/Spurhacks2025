@@ -1,0 +1,2024 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background: #181818;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container for login, personal info, and registration */
+.login-container, .card {
+    background-color: #4b3838;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    margin: 1rem;
+}
+
+.container.mt-5 {
+    max-width: 550px;
+}
+
+.card-header {
+    background: none;
+    border-bottom: none;
+    padding: 0 0 1.5rem 0;
+}
+
+.card-body {
+    padding: 0;
+}
+
+/* Typography */
+.title, .card-header h3 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Form Styling */
+.form-group, .mb-3 {
+    margin-bottom: 1.25rem;
+}
+
+label, .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+
+    color: #ffffff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+.form-control:focus {
+    outline: none;
+    border-color: #1877f2; /* A modern blue */
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+/* Button Styling */
+.login-btn, .submit-btn, .btn-primary, .signup-btn {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #1877f2;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login-btn:hover, .submit-btn:hover, .btn-primary:hover, .signup-btn:hover {
+    background-color: #166fe5;
+}
+
+.login-btn:active, .submit-btn:active, .btn-primary:active, .signup-btn:active {
+    transform: scale(0.98);
+}
+
+/* Link section for signup/login */
+.signup-link, .text-center.mt-3 {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dddfe2;
+}
+
+.signup-link p, .text-center.mt-3 p {
+    margin-bottom: 1rem;
+    color: #606770;
+}
+
+a {
+    color: #1877f2;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Specific adjustment for the signup button in the login form */
+.signup-link .signup-btn {
+    background-color: #42b72a; /* A friendly green */
+    width: auto;
+    padding: 0.7rem 1.5rem;
+}
+
+.signup-link .signup-btn:hover {
+    background-color: #36a420;
+}
+
+/* 
+NOTE: The following CSS rules are extracted from the inline styles.
+For these to take effect, you should:
+1. Move these rules to your external stylesheet (static/style.css).
+2. Add a <link> to your stylesheet in the <head> of this HTML file if it's not already there.
+3. Remove the corresponding `style` attributes from the HTML elements.
+4. Add the class `main-summary-card` to the main `div.card` element to apply its specific styles.
+*/
+
+.main-summary-card {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.week-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.day-box {
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    flex: 1;
+    min-width: 90px;
+    border: 1px solid #dddfe2;
+}
+
+.day-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #606770;
+}
+
+.day-exp {
+    color: #1877f2;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.exp-label {
+    font-size: 0.8rem;
+    color: #606770;
+}
+
+.total-exp-container > p {
+    text-align: center;
+    font-weight: 500;
+    color: #606770;
+    margin-bottom: 0.75rem;
+}
+
+.exp-meter-background {
+    background: #232526;
+    border-radius: 20px;
+    padding: 3px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.exp-meter-foreground {
+    /* The 'width' property should remain as an inline style as it is dynamically calculated. */
+    background: linear-gradient(90deg, #42b72a 60%, #1877f2 100%);
+    height: 28px;
+    border-radius: 17px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 28px;
+    transition: width 0.5s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.exp-meter-foreground span {
+    padding: 0 10px;
+}
+
+/**/ Start Generation Here */
+/* Dashboard Layout */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1100px;
+    padding: 2rem;
+    margin: 2rem auto;
+}
+
+/* General Widget Styling */
+.widget {
+    background-color: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.widget h2, .widget h3 {
+    color: #1c1e21;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid #e9ebee;
+    padding-bottom: 1rem;
+}
+
+/* Specific Widget Layout */
+/* Make Weekly EXP and Total EXP span both columns */
+.widget:nth-child(1), .widget:nth-child(2) {
+    grid-column: 1 / -1;
+}
+
+/* Weekly EXP Widget */
+.days-of-week {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.day {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.day p {
+    margin: 0.25rem 0;
+}
+
+.day p:last-child {
+    font-weight: bold;
+    color: #1877f2;
+}
+
+/* Total EXP Bar Widget */
+.total-exp-bar {
+    background-color: #e9ebee;
+    border-radius: 15px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.progress {
+    background: linear-gradient(90deg, #67b26f, #4ca2cd);
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 15px;
+    transition: width 1s ease-out;
+}
+
+/* Current Workout Widget */
+.workout-details p {
+    font-size: 1rem;
+    color: #333;
+    background-color: #f0f2f5;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* Past Workouts Widget */
+.past-workouts-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.past-workouts-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e9ebee;
+}
+
+.past-workouts-list li:last-child {
+    border-bottom: none;
+}
+
+/* --- Gym Vibe & Modern Enhancements --- */
+
+/* Body background for gym vibe */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #1c1e21;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Latest Workout Box (widget) enhancements */
+.widget.latest-workout {
+    background: #181a1b;
+    color: #fff;
+    max-width: 1250px;     /* Slightly increased width */
+    min-width: 900px;      /* Slightly increased min width */
+    width: 100%;
+    padding: 4.5rem 4.5rem 4.5rem 4.5rem; /* More padding */
+    font-size: 1.5rem;
+    margin: 2.5rem auto;
+    box-sizing: border-box;
+    border: 2px solid #1877f2;
+    box-shadow: 0 8px 36px rgba(34, 197, 94, 0.16);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.widget.latest-workout h2 {
+    text-align: center;
+    letter-spacing: 1px;
+    color: #1877f2;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+.widget.latest-workout .exercise-label {
+    font-weight: 600;
+    color: #42b72a;
+    margin-bottom: 0.5rem;
+}
+
+/* Modern button gradients */
+.btn-primary, .signup-btn {
+    background: linear-gradient(90deg, #1877f2 60%, #42b72a 100%);
+    box-shadow: 0 2px 8px rgba(24,119,242,0.08);
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.signup-btn {
+    background: linear-gradient(90deg, #42b72a 60%, #1877f2 100%);
+    box-shadow: 0 2px 8px rgba(66,183,42,0.08);
+}
+
+.btn-primary:hover, .signup-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 16px rgba(24,119,242,0.12);
+}
+
+/* EXP Bar enhancements */
+.total-exp-container > p {
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.exp-meter-background {
+    background: #232526;
+    border-radius: 20px;
+    padding: 3px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.exp-meter-foreground {
+    background: linear-gradient(90deg, #42b72a 60%, #1877f2 100%);
+    height: 28px;
+    border-radius: 17px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 28px;
+    transition: width 0.5s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.exp-meter-foreground span {
+    padding: 0 10px;
+}
+
+/* Responsive: center everything vertically and horizontally */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    gap: 0;
+}
+
+/* Plus Icon Button */
+.plus-btn {
+    background: linear-gradient(135deg, #42b72a 60%, #1877f2 100%);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(24,119,242,0.12);
+    margin: 0 auto 1.5rem auto;
+    transition: filter 0.2s;
+}
+.plus-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Add Workout Modal */
+.add-workout-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(44, 62, 80, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+.add-workout-modal.active {
+    display: flex;
+}
+.add-workout-form {
+    background: #232526;
+    box-shadow: 0 10px 44px rgba(24,119,242,0.22);
+    max-width: 1050px;      /* Slightly increased width */
+    width: 100%;
+    padding: 3.5rem 3.5rem;
+    margin: 0 auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    border: none;
+    position: relative;
+    box-sizing: border-box;
+}
+.add-workout-form h3 {
+    margin-bottom: 1.5rem;
+    color: #42b72a;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Constrain the exercise-entry width and center it */
+.add-workout-form, .widget.latest-workout form {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+/* Make the workout box and form a bit bigger, but keep input size reasonable */
+.widget.latest-workout {
+    background: #181a1b;
+    color: #fff;
+    max-width: 1250px;
+    min-width: 900px;
+    width: 100%;
+    padding: 4.5rem 4.5rem 4.5rem 4.5rem;
+    font-size: 1.5rem;
+    margin: 2.5rem auto;
+    box-sizing: border-box;
+    border: 2px solid #1877f2;
+    box-shadow: 0 8px 36px rgba(34, 197, 94, 0.16);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-workout-form {
+    background: #232526;
+    box-shadow: 0 10px 44px rgba(24,119,242,0.22);
+    max-width: 1050px;
+    width: 100%;
+    padding: 3.5rem 3.5rem;
+    margin: 0 auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Make the input row fit the widget and inputs scale, but don't increase input size */
+.exercise-entry {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2.8rem;
+    width: 100%;
+    max-width: 1050px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+}
+
+/* Keep the inputs at their previous size */
+.exercise-entry input {
+    min-width: 140px;
+    max-width: 200px;
+    flex: 1 1 0;
+    background: #232526;
+    color: #fff;
+    border: 1.5px solid #333;
+    border-radius: 10px;
+    padding: 1.2rem;
+    font-size: 1.15rem;
+    box-sizing: border-box;
+}
+
+/* Style the Log Workout button in the workout form */
+.add-workout-form button[type="submit"] {
+    background: linear-gradient(90deg, #42b72a 60%, #1877f2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 1.4rem 0;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 2.5rem;
+    transition: filter 0.2s;
+    display: block;
+    text-align: center;
+}
+
+/* New exercise button in workout form */
+.add-exercise-btn {
+    background: linear-gradient(90deg, #42b72a 60%, #1877f2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 1.2rem 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0.5rem 0 0.5rem 0;
+    width: 100%;
+    max-width: 520px;
+    display: block;
+    transition: filter 0.2s;
+    box-shadow: 0 2px 8px rgba(24,119,242,0.08);
+    text-align: center;
+}
+
+.add-exercise-btn:hover {
+    filter: brightness(1.08);
+}
+
+/* Make the heading bigger */
+.widget.latest-workout h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Responsive: stack inputs on small screens */
+@media (max-width: 1300px) {
+    .widget.latest-workout,
+    .add-workout-form,
+    .exercise-entry {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 1rem;
+    }
+    .exercise-entry {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .add-workout-form button[type="submit"] {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .widget.latest-workout,
+    .add-workout-form,
+    .exercise-entry {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 1rem;
+    }
+    .exercise-entry {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Stack widgets on smaller screens */
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .widget:nth-child(1), .widget:nth-child(2) {
+        grid-column: auto; /* Reset column span */
+    }
+
+    .days-of-week {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .day {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem;
+        border-bottom: 1px solid #e9ebee;
+    }
+
+    .day:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .widget.latest-workout {
+        max-width: 98vw;
+        padding: 1rem;
+    }
+    .add-workout-form {
+        max-width: 98vw;
+        padding: 1rem;
+    }
+    .exercise-entry {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .widget.latest-workout,
+    .add-workout-form,
+    .exercise-entry {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 1rem;
+    }
+    .exercise-entry {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .add-workout-form button[type="submit"] {
+        max-width: 100%;
+    }
+}
+
+/* Additional Styles for Workout Type Dropdown */
+.workout-type-dropdown-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.workout-type-dropdown {
+    background: #232526;
+    color: #fff;
+    border: 1.5px solid #333;
+    border-radius: 10px;
+    padding: 1.1rem 1.5rem;
+    font-size: 1.15rem;
+    font-weight: bold;
+    min-width: 220px;
+    max-width: 320px;
+    box-shadow: 0 2px 8px rgba(24,119,242,0.08);
+    appearance: none;
+    outline: none;
+    transition: border-color 0.2s;
+    text-align: center;
+}
+
+.workout-type-dropdown:focus {
+    border-color: #42b72a;
+}
+
+/* --- Exercise Boxes Section --- */
+.exercise-boxes-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.exercise-box {
+    background: #232526;
+    color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(24,119,242,0.10);
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border: 2px solid #1877f2;
+    font-size: 1.15rem;
+    transition: box-shadow 0.2s;
+}
+
+.exercise-box:hover {
+    box-shadow: 0 8px 32px rgba(66,183,42,0.13);
+    border-color: #42b72a;
+}
+
+.exercise-details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.exercise-detail-label {
+    font-weight: 600;
+    color: #42b72a;
+    margin-right: 0.5rem;
+}
+
+.exercise-detail-value {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Add this to your style.css */
+.remove-exercise-btn {
+    background: linear-gradient(135deg, #f44336 60%, #e57373 100%);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 1rem;
+    align-self: center;
+    box-shadow: 0 2px 8px rgba(244,67,54,0.10);
+    transition: filter 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.remove-exercise-btn:hover {
+    filter: brightness(1.1);
+    background: linear-gradient(135deg, #d32f2f 60%, #ef5350 100%);
+}
+
+/* --- Modern Red, Gold, Black Back Button --- */
+.back-btn {
+    position: fixed;
+    top: 32px;
+    left: 32px;
+    z-index: 100;
+    background: linear-gradient(90deg, #1a1a1a 60%, #ffd700 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.08rem;
+    padding: 0.7rem 1.7rem 0.7rem 1.2rem;
+    border-radius: 28px;
+    box-shadow: 0 4px 18px rgba(255,215,0,0.13), 0 1.5px 8px rgba(220,38,38,0.10);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    border: 2px solid #dc2626;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: 
+        background 0.18s cubic-bezier(.4,0,.2,1),
+        color 0.18s cubic-bezier(.4,0,.2,1),
+        border 0.18s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+        filter 0.18s cubic-bezier(.4,0,.2,1);
+}
+.back-btn::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #dc2626 60%, #ffd700 100%);
+    mask: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>') no-repeat center/contain;
+    margin-right: 0.5rem;
+}
+.back-btn:hover {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fffbea;
+    border-color: #ffd700;
+    box-shadow: 0 6px 24px rgba(220,38,38,0.13), 0 2px 12px rgba(255,215,0,0.13);
+    filter: brightness(1.08) saturate(1.1);
+}
+
+/* --- Modern Red, Gold, Black Buttons --- */
+.btn-primary, .signup-btn, .login-btn, .submit-btn, .add-exercise-btn {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem 0;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    box-shadow: 0 2px 8px rgba(220,38,38,0.08);
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.btn-primary:hover, .signup-btn:hover, .login-btn:hover, .submit-btn:hover, .add-exercise-btn:hover {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #1a1a1a;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.13);
+}
+
+/* --- Widget/Panel Border Example --- */
+.widget, .card {
+    border: 2px solid #ffd700 !important;
+    border-radius: 18px;
+    background: #181818;
+    box-shadow: 0 4px 18px rgba(220,38,38,0.10);
+    padding: 2rem;
+}
+
+/* --- EXP Bar Example --- */
+.exp-meter-background {
+    background: #222;
+    border-radius: 16px;
+    height: 28px;
+    width: 100%;
+    margin: 0.7rem 0;
+    overflow: hidden;
+}
+.exp-meter-foreground {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    font-weight: 700;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s;
+}
+
+/* --- General Text --- */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffd700;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 700;
+}
+body {
+    background: radial-gradient(ellipse at top left, #232323 60%, #111 100%);
+    color: #fff;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* --- Seven Boxes Section --- */
+.seven-boxes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    max-width: 700px;
+    margin: 3rem auto;
+}
+
+.main-box {
+    background: #181818;
+    border: 2px solid #ffd700;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(220,38,38,0.10);
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+}
+
+.box-type-label {
+    color: #dc2626;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.inner-box {
+    background: #232526;
+    border-radius: 10px;
+    border: 1.5px solid #ffd700;
+    color: #ffd700;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 1.1rem 1.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+    transition: box-shadow 0.18s, border 0.18s;
+}
+
+.inner-box:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Sponsors Section --- */
+.sponsors-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  border-bottom: 3px solid #FFD600;
+  padding: 30px 0 0 0;
+  margin-bottom: 40px;
+  min-height: 70px;
+}
+
+.sponsors-title {
+  color: #FFD600;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 auto;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.sponsors-btn {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #e74c3c 0%, #FFD600 100%);
+  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.sponsors-btn:hover {
+  background: linear-gradient(90deg, #c0392b 0%, #FFD600 100%);
+  color: #fff;
+}
+
+/* Center the sponsors-container */
+.sponsors-container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+/* Landing Page Styles */
+.landing-body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #181818 60%, #dc2626 100%);
+    color: #fff;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4vw 1.2rem 4vw;
+    background: #181818;
+    border-bottom: 2px solid #ffd700;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #dc2626;
+    letter-spacing: 2px;
+}
+
+.logo .gold {
+    color: #ffd700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.nav-btn {
+    color: #ffd700;
+    background: transparent;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 0.5rem 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.18s, color 0.18s;
+}
+
+.nav-btn:hover {
+    background: #ffd700;
+    color: #181818;
+}
+
+.nav-btn-signup {
+    background: #dc2626;
+    color: #fff;
+    border: 2px solid #dc2626;
+    margin-left: 0.5rem;
+}
+
+.nav-btn-signup:hover {
+    background: #ffd700;
+    color: #181818;
+    border-color: #ffd700;
+}
+
+.landing-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-hero {
+    text-align: center;
+    background: rgba(24,24,24,0.92);
+    padding: 3rem 2.5rem 3.5rem 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(220,38,38,0.13);
+    max-width: 500px;
+    margin: 3rem auto;
+}
+
+.landing-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1.2rem;
+    color: #ffd700;
+    letter-spacing: 1px;
+}
+
+.landing-hero .gold {
+    color: #ffd700;
+}
+
+.hero-desc {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 2.2rem;
+    line-height: 1.6;
+}
+
+.hero-cta {
+    display: inline-block;
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem 2.2rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(220,38,38,0.13);
+    transition: background 0.18s, color 0.18s, transform 0.18s;
+}
+
+.hero-cta:hover {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    transform: translateY(-3px) scale(1.04);
+}
+
+.landing-footer {
+    text-align: center;
+    padding: 1.2rem 0 0.8rem 0;
+    background: #181818;
+    color: #ffd700;
+    font-size: 1rem;
+    border-top: 2px solid #ffd700;
+    letter-spacing: 1px;
+}
+
+/* Header Styles */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: #181818;
+    border-bottom: 2px solid #ffd700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4vw;
+    box-sizing: border-box;
+}
+
+.header-logo a {
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.logo-red {
+    color: #ffffff;
+}
+
+.logo-gold {
+    color: #ffd700;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.header-link {
+    color: #ffd700;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 0.4rem 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.08rem;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+    letter-spacing: 0.5px;
+}
+
+.header-link:hover, .header-link:focus {
+    background: #dc2626;
+    color: #fff;
+    border-color: #ffd700;
+    outline: none;
+}
+
+@media (max-width: 900px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 2vw;
+    }
+    .header-nav {
+        gap: 0.7rem;
+        margin-top: 0.7rem;
+    }
+}
+
+/* Add padding to the top of your page content so it doesn't hide under the fixed header */
+.container, .main-content, main {
+    padding-top: 90px; /* Adjust if your header is taller/shorter */
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px; /* matches your header height */
+    width: 100%;
+}
+
+.dashboard-card {
+    margin-bottom: 2rem;
+    /* your existing card styles */
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.workout-btn {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, transform 0.18s;
+    width: 320px;
+    margin: 0;
+}
+
+.workout-btn:hover {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    transform: translateY(-3px) scale(1.04);
+}
+
+.dashboard-progress {
+    width: 350px;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-label {
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    text-align: left;
+}
+
+.progress-bar {
+    background: #181818;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 24px;
+    width: 100%;
+    border: 1px solid #ffd700;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    font-weight: 700;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px 0 0 12px;
+}
+
+.dashboard-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 0.5rem;  /* Reduce this value to move everything up */
+}
+
+.ai-workout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ai-workout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .ai-workout-day-card {
+            background: #181818;
+            border: 2px solid yellow;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-workout-day-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ai-workout-day-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .ai-workout-muscle-group {
+            color: #ffffff;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .ai-exercise-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #dc2626;
+            transition: all 0.3s ease;
+        }
+
+        .ai-exercise-card:hover {
+            background: #e9ecef;
+            transform: scale(1.02);
+        }
+
+        .ai-exercise-name {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .ai-exercise-detail-row {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-exercise-detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .ai-exercise-detail-label {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .ai-exercise-detail-value {
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .ai-error-container {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        .ai-loading-container {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.3em;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .ai-workout-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-workout-day-title {
+                font-size: 1.5em;
+            }
+            
+            .ai-exercise-card {
+                padding: 15px;
+            }
+        }
+
+.ai-meal-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ai-meal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.ai-meal-day-card {
+    background: #181818;
+    border: 2px solid yellow;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.ai-meal-day-card:hover {
+    transform: translateY(-5px);
+}
+
+.ai-meal-day-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.ai-meal-type {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.ai-meal-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #ff9a9e;
+    transition: all 0.3s ease;
+}
+
+.ai-meal-card:hover {
+    background: #e9ecef;
+    transform: scale(1.02);
+}
+
+.ai-meal-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.ai-meal-detail-row {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ai-meal-detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.ai-meal-detail-label {
+    color: #333;
+    font-weight: 600;
+}
+
+.ai-meal-detail-value {
+    color: #dc2626;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.ai-error-container {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.1em;
+}
+
+.ai-loading-container {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.3em;
+    color: white;
+}
+@media (max-width: 768px) {
+    .ai-meal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-meal-day-title {
+        font-size: 1.5em;
+    }
+
+    .ai-meal-card {
+        padding: 15px;
+    }
+
+    .ai-meal-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* --- FAQ Page Styles --- */
+.faq-title {
+    color: #ffd700;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background: #232526;
+    border-radius: 10px;
+    border: 1.5px solid #ffd700;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+    cursor: pointer;
+    transition: box-shadow 0.18s, border 0.18s;
+}
+
+.faq-item:hover {
+    box-shadow: 0 8px 32px rgba(66,183,42,0.13);
+    border-color: #42b72a;
+}
+
+.faq-question {
+    color: #ffd700;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.faq-answer {
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    display: none;
+    transition: all 0.2s;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* --- Rewards Page Styles --- */
+.rewards-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 2.2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    justify-items: center;
+}
+
+.reward-item {
+    background: linear-gradient(135deg, #181818 70%, #232526 100%);
+    border-radius: 22px 22px 32px 32px/18px 18px 36px 36px;
+    border: 2.5px dashed #ffd700;
+    box-shadow: 0 6px 32px rgba(220,38,38,0.10), 0 1.5px 8px rgba(255,215,0,0.08);
+    color: #ffd700;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 2.2rem 1.7rem 1.7rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    min-height: 260px;
+    transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+    overflow: hidden;
+}
+
+.reward-item::before, .reward-item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 18px;
+    background: #181818;
+    border-radius: 0 0 18px 18px/0 0 18px 18px;
+    z-index: 1;
+}
+
+.reward-item::before {
+    top: -10px;
+    border-bottom: 2.5px dashed #ffd700;
+}
+
+.reward-item::after {
+    bottom: -10px;
+    border-top: 2.5px dashed #ffd700;
+}
+
+.reward-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffd700;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px #181818;
+}
+
+.reward-desc {
+    color: #fff;
+    font-size: 1.08rem;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.reward-xp {
+    color: #42b72a;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+    background: #232526;
+    padding: 0.4rem 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(66,183,42,0.08);
+    display: inline-block;
+}
+
+.reward-item form, .reward-item button {
+    width: 100%;
+}
+
+.reward-item .btn-primary {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    font-weight: 800;
+    border-radius: 10px;
+    font-size: 1.13rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.2rem;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.10);
+    border: none;
+    padding: 0.9rem 0;
+    letter-spacing: 0.5px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+
+.reward-item .btn-primary:hover:enabled {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.13);
+}
+
+.reward-item .btn-primary[disabled] {
+    background: #232526;
+    color: #bbb;
+    border: 2px solid #ffd700;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+    .rewards-list {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .reward-item {
+        min-height: 0;
+        padding: 1.5rem 1rem 1.2rem 1rem;
+    }
+}
+
+/* Fix for header overlap on meal plan page */
+.ai-meal-container {
+    padding-top: 110px;
+}
+
+/* Fix for header overlap on workout plan page */
+.ai-workout-container {
+    padding-top: 110px;
+}
+
+/* --- Goals Page Styles --- */
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.goal-item {
+    background: linear-gradient(135deg, #181818 80%, #232526 100%);
+    border-radius: 16px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 18px rgba(220,38,38,0.10), 0 1.5px 8px rgba(255,215,0,0.08);
+    color: #ffd700;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+}
+
+.goal-item:hover {
+    box-shadow: 0 8px 32px rgba(66,183,42,0.13);
+    border-color: #42b72a;
+    transform: translateY(-2px) scale(1.01);
+}
+
+.goal-label {
+    color: #ffd700;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+}
+
+.goal-item form {
+    margin: 0;
+}
+
+.goal-item .btn-primary {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    font-weight: 800;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.10);
+    border: none;
+    padding: 0.6rem 1.7rem;
+    letter-spacing: 0.5px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+}
+
+.goal-item .btn-primary:hover:enabled {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.13);
+}
+
+@media (max-width: 700px) {
+    .goal-item {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        text-align: center;
+    }
+}
+
+/* --- XP Bar Styles --- */
+.xp-bar-container {
+    width: 100%;
+    max-width: 500px;
+    height: 28px;
+    background: #232526;
+    border-radius: 16px;
+    border: 2px solid #ffd700;
+    margin: 2rem auto 1.5rem auto;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+    overflow: hidden;
+    position: relative;
+}
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    border-radius: 16px 0 0 16px;
+    transition: width 0.5s cubic-bezier(.4,2.2,.2,1);
+}
+
+/* --- Goals Section --- */
+.goals-section-title {
+    color: #ffd700;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.goal {
+    background: linear-gradient(135deg, #181818 80%, #232526 100%);
+    border-radius: 18px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 18px rgba(220,38,38,0.10), 0 1.5px 8px rgba(255,215,0,0.08);
+    color: #ffd700;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 1.5rem 2rem 1.2rem 2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+}
+
+.goal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.difficulty-easy { color: #42b72a; }
+.difficulty-medium { color: #ffd700; }
+.difficulty-hard { color: #dc2626; }
+
+.goal p {
+    color: #fff;
+    font-size: 1.03rem;
+    margin: 0.1rem 0;
+    font-weight: 400;
+}
+
+/* --- Done Buttons --- */
+.goals-buttons {
+    margin: 2.5rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 400px;
+}
+
+.goals-buttons form {
+    margin: 0;
+}
+
+.goals-buttons .btn-primary {
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    font-weight: 800;
+    border-radius: 10px;
+    font-size: 1.13rem;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.10);
+    border: none;
+    padding: 0.9rem 0;
+    letter-spacing: 0.5px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+}
+
+.goals-buttons .btn-primary:hover:enabled {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.13);
+}
+
+@media (max-width: 700px) {
+    .goals-list, .goal, .goals-buttons {
+        max-width: 98vw;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .goal {
+        padding: 1rem 0.7rem 0.7rem 0.7rem;
+    }
+}
+
+/* New Styles for Goals Page XP Section */
+.goals-xp-header {
+    max-width: 700px;
+    margin: 2.5rem auto 1.5rem auto;
+    text-align: center;
+}
+.goals-xp-stats {
+    color: #ffd700;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+.goals-xp-next {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0.7rem 0 1.2rem 0;
+}
+
+.goal-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 1.5rem;
+}
+
+.goal-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1.5rem;
+    background: linear-gradient(135deg, #181818 80%, #232526 100%);
+    border-radius: 18px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 18px rgba(220,38,38,0.10), 0 1.5px 8px rgba(255,215,0,0.08);
+    color: #ffd700;
+    font-size: 1.08rem;
+    font-weight: 500;
+    padding: 1.5rem 2rem 1.2rem 2rem;
+    position: relative;
+    transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+}
+
+.goal-flex form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.goal-done-btn {
+    margin-left: 1.5rem;
+    min-width: 90px;
+    height: 48px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 0 1.5rem;
+    background: linear-gradient(90deg, #ffd700 60%, #dc2626 100%);
+    color: #181818;
+    box-shadow: 0 2px 8px rgba(255,215,0,0.10);
+    border: none;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+}
+.goal-done-btn:hover {
+    background: linear-gradient(90deg, #dc2626 60%, #ffd700 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,215,0,0.13);
+}
+
+@media (max-width: 900px) {
+    .goal-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.2rem;
+        padding: 1rem 0.7rem 0.7rem 0.7rem;
+    }
+    .goal-done-btn {
+        margin-left: 0;
+        width: 100%;
+        min-width: 0;
+    }
+    .goal-row {
+        margin-bottom: 1.2rem;
+    }
+}
+
+/* Add to your style.css */
+.top-left-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #e74c3c;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  z-index: 1000;
+  transition: background 0.2s;
+}
+.top-left-btn:hover {
+  background: #c0392b;
+}
+
